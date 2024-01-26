@@ -1,0 +1,77 @@
+        print(f"Height:{self.height} meters")
+        print(f"Weight: {self.weight} kilograms")
+        print(f"Haemoglobin: {self.haemoglobin} g/dL")
+        print(f"Cholesterol: {self.cholestrol} mg/dL")
+
+        bmi_category = self.categorize_bmi()
+        cholesterol_status = self.check_cholesterol()
+        blood_donation_eligibility = self.check_blood_donation_eligibility()
+
+        print(f"\nBMI Category: {bmi_category}")
+        print(f"Cholesterol Status: {cholesterol_status}")
+
+        if blood_donation_eligibility:
+            print("Eligible for blood donation.")
+        else:
+            print("Not eligible for blood donation.")
+        print("-" * 30)
+
+        # Dummy display_fitness_plan method
+        self.display_fitness_plan(bmi_category)
+
+    def display_diet_plan(self):
+        bmi_category = self.categorize_bmi()
+        cholesterol_status = self.check_cholesterol()
+
+        print("\nDiet Plan for " + self.name + ":")
+
+        if bmi_category == "Underweight":
+            print("Include more calorie-dense foods:")
+            print("- Whole grains")
+            print("- Nuts and seeds")
+            print("- Healthy fats (avocado, olive oil)")
+            print("- Protein-rich foods (lean meats, dairy)")
+        elif bmi_category == "Normal":
+            print("Maintain a balanced diet:")
+            print("- Fruits and vegetables")
+            print("- Whole grains")
+            print("- Lean proteins (chicken, fish, tofu)")
+            print("- Dairy or dairy alternatives")
+        elif bmi_category == "Overweight" or bmi_category == "Obese":
+            print("Focus on weight management:")
+            print("- Portion control")
+            print("- Increase fruits and vegetables")
+            print("- Choose lean proteins")
+            print("- Limit processed foods and added sugars")
+
+        if cholesterol_status == "High":
+            print("For high cholesterol, consider:")
+            print("- Foods rich in omega-3 fatty acids (fatty fish, flaxseeds)")
+            print("- Soluble fiber sources (oats, beans)")
+            print("- Limit saturated and trans fats")
+            print("- Increase plant sterols (found in nuts and seeds)")
+
+    def display_fitness_plan(self, bmi_category)
+        print("\nFitness Plan for " + self.name + ":")
+        if bmi_category == "Underweight":
+            print("Hey there!\nYour body is a superstar, and it's time to give it the VIP treatment.")
+        elif bmi_category == "Normal":
+            print("Hey!\nGuess what? Your BMI is grooving to the perfect tune!")
+        else:
+            print("Hi!\nReady to dance to the rhythm of health?\n")
+
+
+if __name__ == "__main__":
+    num_people = int(input("Enter the number of people: "))
+
+    for _ in range(num_people):
+        name = input("Enter name: ")
+        age = int(input("Enter age: "))
+        height = float(input("Enter height (in meters): "))
+        weight = float(input("Enter weight (in kilograms): "))
+        haemoglobin = float(input("Enter haemoglobin level: "))
+        cholestrol = float(input("Enter cholesterol level: "))
+
+        person = Healthcare(name, age, height, weight, haemoglobin, cholestrol)
+        person.display_health_info()
+        person.display_diet_plan()
